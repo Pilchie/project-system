@@ -24,9 +24,9 @@ namespace Microsoft.VisualStudio.ProjectSystem.VS.Tree.Dependencies
     /// <summary>
     /// Provides the special "Dependencies" folder to project trees.
     /// </summary>
-    [Export(ExportContractNames.ProjectTreeProviders.PhysicalViewRootGraft, typeof(IProjectTreeProvider))]
-    [Export(typeof(IDependenciesTreeServices))]
-    [AppliesTo(ProjectCapability.DependenciesTree)]
+    //[Export(ExportContractNames.ProjectTreeProviders.PhysicalViewRootGraft, typeof(IProjectTreeProvider))]
+    //[Export(typeof(IDependenciesTreeServices))]
+    //[AppliesTo(ProjectCapability.DependenciesTree)]
     internal class DependenciesProjectTreeProvider :
         ProjectTreeProviderBase,
         IProjectTreeProvider,

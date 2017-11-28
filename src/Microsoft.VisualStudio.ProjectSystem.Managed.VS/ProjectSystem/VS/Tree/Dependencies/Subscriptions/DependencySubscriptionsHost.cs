@@ -17,9 +17,9 @@ using Microsoft.VisualStudio.Threading.Tasks;
 
 namespace Microsoft.VisualStudio.ProjectSystem.VS.Tree.Dependencies.Subscriptions
 {
-    [Export(DependencySubscriptionsHostContract, typeof(ICrossTargetSubscriptionsHost))]
-    [Export(typeof(IDependenciesSnapshotProvider))]
-    [AppliesTo(ProjectCapability.DependenciesTree)]
+    //[Export(DependencySubscriptionsHostContract, typeof(ICrossTargetSubscriptionsHost))]
+    //[Export(typeof(IDependenciesSnapshotProvider))]
+    //[AppliesTo(ProjectCapability.DependenciesTree)]
     internal class DependencySubscriptionsHost : CrossTargetSubscriptionHostBase, IDependenciesSnapshotProvider
     {
         public const string DependencySubscriptionsHostContract = "DependencySubscriptionsHostContract";

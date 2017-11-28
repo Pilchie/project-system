@@ -253,25 +253,25 @@ namespace Microsoft.VisualStudio.ProjectSystem.VS.Tree.Dependencies.CrossTarget
 
             await _commonServices.ThreadingService.SwitchToUIThread();
 
-            await _tasksService.LoadedProjectAsync(() =>
-            {
-                lock (_linksLock)
-                {
-                    foreach (var configuredProject in newProjectContext.InnerConfiguredProjects)
-                    {
-                        SubscribeToConfiguredProject(configuredProject.Services.ProjectSubscription,
-                            new ActionBlock<IProjectVersionedValue<IProjectSubscriptionUpdate>>(
-                                              e => OnProjectChangedCoreAsync(e, RuleHandlerType.Evaluation)));
-                    }
+            //await _tasksService.LoadedProjectAsync(() =>
+            //{
+            //    lock (_linksLock)
+            //    {
+            //        foreach (var configuredProject in newProjectContext.InnerConfiguredProjects)
+            //        {
+            //            SubscribeToConfiguredProject(configuredProject.Services.ProjectSubscription,
+            //                new ActionBlock<IProjectVersionedValue<IProjectSubscriptionUpdate>>(
+            //                                  e => OnProjectChangedCoreAsync(e, RuleHandlerType.Evaluation)));
+            //        }
 
-                    foreach (var subscriber in Subscribers)
-                    {
-                        subscriber.Value.AddSubscriptionsAsync(newProjectContext);
-                    }
-                }
+            //        foreach (var subscriber in Subscribers)
+            //        {
+            //            subscriber.Value.AddSubscriptionsAsync(newProjectContext);
+            //        }
+            //    }
 
-                return Task.CompletedTask;
-            });
+            //    return Task.CompletedTask;
+            //});
         }
 
         private void SubscribeToConfiguredProject(IProjectSubscriptionService subscriptionService,
