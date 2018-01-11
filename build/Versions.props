@@ -67,6 +67,7 @@
     <!-- Roslyn -->
     <MicrosoftVisualStudioLanguageServicesVersion>2.6.0-beta1-62113-02</MicrosoftVisualStudioLanguageServicesVersion>
     <MicrosoftVisualStudioIntegrationTestUtilitiesVersion>2.6.0-beta1-62113-02</MicrosoftVisualStudioIntegrationTestUtilitiesVersion>
+    <MicrosoftCodeAnalysisPooledObjectsVersion>2.6.0-beta1-62113-02</MicrosoftCodeAnalysisPooledObjectsVersion>
     <RoslynIntegrationVsixVersion>2.6.0.6211302</RoslynIntegrationVsixVersion>
     <MicrosoftNetRoslynDiagnosticsVersion>2.6.0-beta1-62322-01</MicrosoftNetRoslynDiagnosticsVersion>
 

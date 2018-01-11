@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Microsoft.CodeAnalysis.PooledObjects;
 using Microsoft.VisualStudio.Imaging.Interop;
 using Microsoft.VisualStudio.ProjectSystem.VS.Tree.Dependencies.CrossTarget;
 using Microsoft.VisualStudio.ProjectSystem.VS.Utilities;
@@ -15,8 +15,6 @@ namespace Microsoft.VisualStudio.ProjectSystem.VS.Tree.Dependencies.Snapshot
 {
     internal class Dependency : IDependency
     {
-        private static ConcurrentBag<StringBuilder> s_builderPool = new ConcurrentBag<StringBuilder>();
-
         // These priorities are for graph nodes only and are used to group graph nodes 
         // appropriatelly in order groups predefined order instead of alphabetically.
         // Order is not changed for top dependency nodes only for grpah hierarchies.
@@ -336,25 +334,20 @@ namespace Microsoft.VisualStudio.ProjectSystem.VS.Tree.Dependencies.Snapshot
             Requires.NotNullOrEmpty(providerType, nameof(providerType));
             Requires.NotNullOrEmpty(modelId, nameof(modelId));
 
-            StringBuilder sb = null;
-            try
-            {
-                int length = targetFramework.ShortName.Length + providerType.Length + 2;
-                if (!s_builderPool.TryTake(out sb))
-                {
-                    sb = new StringBuilder(length);
-                }
+            var psb = PooledStringBuilder.GetInstance();
+            AppendId(psb.Builder, targetFramework, providerType, modelId);
+            return psb.ToStringAndFree();
+        }
 
-                sb.Append(targetFramework.ShortName).Append('\\');
-                sb.Append(providerType).Append('\\');
-                sb.Append(Normalize(modelId));
-                sb.TrimEnd(CommonConstants.BackSlashDelimiter);
-                return sb.ToString();
-            }
-            finally
-            {
-                s_builderPool.Add(sb);
-            }
+        private static void AppendId(StringBuilder sb, ITargetFramework targetFramework, string providerType, string modelId)
+        {
+            int length = targetFramework.ShortName.Length + providerType.Length + 2;
+            sb.EnsureCapacity(length);
+
+            sb.Append(targetFramework.ShortName).Append('\\');
+            sb.Append(providerType).Append('\\');
+            sb.Append(Normalize(modelId));
+            sb.TrimEnd(CommonConstants.BackSlashDelimiter);
         }
 
         private static string GetFullPath(string originalItemSpec, string containingProjectPath)
