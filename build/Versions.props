@@ -67,9 +67,11 @@
     <!-- Roslyn -->
     <MicrosoftVisualStudioLanguageServicesVersion>2.6.0-beta1-62113-02</MicrosoftVisualStudioLanguageServicesVersion>
     <MicrosoftVisualStudioIntegrationTestUtilitiesVersion>2.6.0-beta1-62113-02</MicrosoftVisualStudioIntegrationTestUtilitiesVersion>
-    <MicrosoftCodeAnalysisPooledObjectsVersion>2.6.0-beta1-62113-02</MicrosoftCodeAnalysisPooledObjectsVersion>
     <RoslynIntegrationVsixVersion>2.6.0.6211302</RoslynIntegrationVsixVersion>
     <MicrosoftNetRoslynDiagnosticsVersion>2.6.0-beta1-62322-01</MicrosoftNetRoslynDiagnosticsVersion>
+
+    <!-- From roslyn, but source package, so okay for version to mismatch the above -->
+    <MicrosoftCodeAnalysisPooledObjectsVersion>2.7.0-beta3-62511-04</MicrosoftCodeAnalysisPooledObjectsVersion>
 
     <!-- NuGet -->
     <NuGetSolutionRestoreManagerInteropVersion>4.3.0</NuGetSolutionRestoreManagerInteropVersion>
