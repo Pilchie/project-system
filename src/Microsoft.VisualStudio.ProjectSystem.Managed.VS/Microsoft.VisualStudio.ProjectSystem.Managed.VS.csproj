@@ -1,6 +1,15 @@
 ﻿<!-- Copyright (c)  Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information. -->
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\VisualStudio.props" />
+
+  <PropertyGroup>
+    <!-- workaround for https://github.com/NuGet/Home/issues/5894 -->
+    <OriginalProjectName>Microsoft.VisualStudio.ProjectSystem.Managed.VS</OriginalProjectName>
+    <RootMSBuildProjectExtensionsPath>$(ArtifactsObjDir)$(OriginalProjectName)\</RootMSBuildProjectExtensionsPath>
+  </PropertyGroup>
+  <Import Project="$(RootMSBuildProjectExtensionsPath)$(OriginalProjectName).*.props"
+          Condition=" '$(MSBuildProjectName)' != '$(OriginalProjectName)' and '$(ImportProjectExtensionProps)' != 'false' and exists('$(RootMSBuildProjectExtensionsPath)')" />
+
   <PropertyGroup>
     <RootNamespace>Microsoft.VisualStudio</RootNamespace>
     
@@ -239,5 +248,7 @@
     <Compile Update="@(Compile)">
       <Link Condition="'%(NuGetPackageId)' != ''">%(NuGetPackageId)\%(Link)</Link>
     </Compile>
-</ItemGroup>
+  </ItemGroup>
+  <Import Project="$(RootMSBuildProjectExtensionsPath)$(OriginalProjectName).*.targets"
+          Condition=" '$(MSBuildProjectName)' != '$(OriginalProjectName)' and '$(ImportProjectExtensionProps)' == 'true' and exists('$(RootMSBuildProjectExtensionsPath)')" />
 </Project>
