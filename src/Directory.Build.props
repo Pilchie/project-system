@@ -12,12 +12,14 @@
 
   <PropertyGroup Condition="'$(Language)' == 'C#'">
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Language)' == 'VB'">
     <!-- The default is Embed -->
     <VBRuntime>Default</VBRuntime>
     <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <LangVersion>15.5</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup>
