@@ -19,9 +19,7 @@
     <!-- The default is Embed -->
     <VBRuntime>Default</VBRuntime>
     <RemoveIntegerChecks>true</RemoveIntegerChecks>
-
-    <!-- This doesn't work in WPF projects (during their `tmp_proj` build). -->
-    <!-- <LangVersion>15.5</LangVersion> -->
+    <LangVersion>15.5</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup>
