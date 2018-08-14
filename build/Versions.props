@@ -116,6 +116,7 @@
       https://dotnet.myget.org/F/templating/api/v3/index.json;
       https://dotnet.myget.org/F/project-system-interop/api/v3/index.json;
       https://vside.myget.org/F/vs-impl/api/v3/index.json;
+      C:\code\roslyn-analyzers\artifacts\Release\packages;
     </RestoreSources>
   </PropertyGroup>
 </Project>

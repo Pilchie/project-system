@@ -23,6 +23,9 @@
     <PackageReference Include="Microsoft.Build.Tasks.Core" Version="$(MicrosoftBuildVersion)" />
     <PackageReference Include="Microsoft.Build.Engine" Version="$(MicrosoftBuildVersion)" />
 
+    <!-- Analyzers -->
+    <PackageReference Include="Roslyn.Diagnostics.Analyzers" Version="$(RoslynDiagnosticsAnalyzersVersion)" />
+
     <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
   </ItemGroup>
 
@@ -34,4 +37,12 @@
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioShell15Version)" />
     <PackageReference Include="Microsoft.VisualStudio.Text.UI" Version="$(MicrosoftVisualStudioTextUIVersion)" />
   </ItemGroup>
+
+  <ItemGroup>
+    <BannedSymbols Include="$(MSBuildThisFileDirectory)\BannedSymbols.txt" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <AdditionalFileItemNames>$(AdditionalFileItemNames);BannedSymbols</AdditionalFileItemNames>
+  </PropertyGroup>
 </Project>
