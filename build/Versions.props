@@ -102,6 +102,9 @@
     <MoqVersion>4.9.0</MoqVersion>
     <XUnitVersion>2.4.0</XUnitVersion>
     <XUnitAnalyzersVersion>0.10.0</XUnitAnalyzersVersion>
+
+    <!-- Analyzers-->
+    <RoslynDiagnosticsAnalyzersVersion>2.6.2-ci</RoslynDiagnosticsAnalyzersVersion>
   </PropertyGroup>
 
   <PropertyGroup>
